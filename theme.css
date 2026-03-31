@@ -1,0 +1,394 @@
+:root {
+    /* Variables pour le thème sombre (par défaut) */
+    --bg-color: #0d1117;
+    --text-color: #c9d1d9;
+    --header-bg: #161b22;
+    --footer-bg: #161b22;
+    --card-bg: #222;
+    --border-color: #444;
+    --hover-color: #00ffff;
+    --hover-shadow: 0 0 5px #00ffff;
+    --input-bg: #222;
+    --input-border: #444;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --section-bg: transparent;
+    --glitch-color-1: #00ffff;
+    --glitch-color-2: #ff00ff;
+    --footer-title-color: #c9d1d9;
+    --project-card-bg: #222;
+    --veille-section-bg: #161b22;
+    --project-title-color: #c9d1d9;
+    --veille-text-color: #c9d1d9;
+    --skill-icon-color: #c9d1d9;
+    --project-icon-color: #c9d1d9;
+    --input-text-color: #c9d1d9;
+    --project-icon-bg: #333;
+    --skills-card-bg: #222;
+    --project-icon-container-bg: #333;
+}
+
+[data-theme="light"] {
+    --bg-color: #ffffff;
+    --text-color: #333333;
+    --header-bg: #f8f9fa;
+    --footer-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --hover-color: #007bff;
+    --hover-shadow: 0 0 5px #007bff;
+    --input-bg: #ffffff;
+    --input-border: #ced4da;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --section-bg: #f8f9fa;
+    --glitch-color-1: #007bff;
+    --glitch-color-2: #ff6b6b;
+    --footer-title-color: #333333;
+    --project-card-bg: #ffffff;
+    --veille-section-bg: #ffffff;
+    --project-title-color: #333333;
+    --veille-text-color: #333333;
+    --skill-icon-color: #333333;
+    --project-icon-color: #333333;
+    --input-text-color: #333333;
+    --project-icon-bg: #f0f0f0;
+    --skills-card-bg: #f8f9fa;
+    --project-icon-container-bg: #f0f0f0;
+}
+
+/* Styles de base qui utilisent les variables */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background-color: var(--header-bg);
+    box-shadow: 0 4px 10px var(--shadow-color);
+}
+
+footer {
+    background-color: var(--footer-bg);
+    box-shadow: 0 -4px 10px var(--shadow-color);
+}
+
+.section {
+    background-color: var(--section-bg);
+}
+
+.glitch-text {
+    background: linear-gradient(90deg, var(--glitch-color-1), var(--glitch-color-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-link {
+    color: var(--text-color);
+}
+
+.nav-link:hover {
+    color: var(--hover-color);
+    text-shadow: var(--hover-shadow);
+}
+
+.footer-links a {
+    color: var(--text-color);
+}
+
+.footer-links a:hover {
+    color: var(--hover-color);
+    text-shadow: var(--hover-shadow);
+}
+
+.social-links a {
+    color: var(--text-color);
+}
+
+.social-links a:hover {
+    color: var(--hover-color);
+}
+
+.email-contact a {
+    color: var(--text-color);
+}
+
+.email-contact a:hover {
+    color: var(--hover-color);
+    text-shadow: var(--hover-shadow);
+}
+
+.form-group input,
+.form-group textarea {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--text-color);
+}
+
+.copyright {
+    color: var(--text-color);
+    border-top-color: var(--border-color);
+}
+
+/* Style du bouton de basculement */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px var(--hover-shadow);
+}
+
+.theme-toggle i {
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+/* Styles spécifiques pour le mode clair */
+[data-theme="light"] .section-title {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .about-description {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .home-description,
+[data-theme="light"] .home-intro {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .profile-photo {
+    border: 2px solid var(--border-color);
+    box-shadow: 0 0 10px var(--shadow-color);
+}
+
+/* Styles pour les cartes de projets en mode clair */
+[data-theme="light"] .project-card {
+    background-color: var(--project-card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="light"] .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .project-card h3 {
+    color: var(--project-title-color);
+    margin-bottom: 1rem;
+}
+
+[data-theme="light"] .project-card .project-icon {
+    color: var(--project-icon-color);
+    font-size: 2rem;
+    background-color: var(--project-icon-container-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: inline-block;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+[data-theme="light"] .project-card:hover .project-icon {
+    transform: scale(1.05);
+    background-color: var(--project-icon-bg);
+}
+
+/* Styles pour la section veille technologique en mode clair */
+[data-theme="light"] #veille {
+    background-color: var(--veille-section-bg);
+}
+
+/* Styles pour le footer en mode clair */
+[data-theme="light"] .footer-section h3 {
+    color: var(--footer-title-color);
+    font-weight: 600;
+}
+
+[data-theme="light"] .footer-links a {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .footer-links a:hover {
+    color: var(--hover-color);
+}
+
+[data-theme="light"] .social-links a {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .social-links a:hover {
+    color: var(--hover-color);
+}
+
+[data-theme="light"] .email-contact a {
+    color: var(--text-color);
+}
+
+[data-theme="light"] .email-contact a:hover {
+    color: var(--hover-color);
+}
+
+/* Styles pour les compétences */
+.skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.skill {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.skill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.skill-icon {
+    color: var(--skill-icon-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    background-color: var(--project-icon-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skill:hover .skill-icon {
+    transform: scale(1.05);
+}
+
+.skill-header p {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.skills-subtitle {
+    color: var(--text-color);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--border-color);
+    border-radius: 3px;
+    margin-top: 0.5rem;
+}
+
+.progress {
+    height: 100%;
+    background-color: var(--hover-color);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Styles spécifiques pour le mode clair */
+[data-theme="light"] .skills-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+[data-theme="light"] .skill {
+    background-color: var(--skills-card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+[data-theme="light"] .skill:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .skill-icon {
+    color: var(--skill-icon-color);
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    background-color: var(--project-icon-bg);
+    padding: 0.75rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+[data-theme="light"] .skill:hover .skill-icon {
+    transform: scale(1.05);
+    background-color: var(--project-icon-container-bg);
+}
+
+/* Styles pour les sections en mode clair */
+[data-theme="light"] .section {
+    background-color: var(--section-bg);
+}
+
+[data-theme="light"] #about {
+    background-color: var(--section-bg);
+}
+
+[data-theme="light"] #skills {
+    background-color: var(--section-bg);
+}
+
+/* Styles pour le formulaire de contact en mode clair */
+[data-theme="light"] .form-group input,
+[data-theme="light"] .form-group textarea {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--input-text-color);
+    border-radius: 4px;
+    padding: 0.75rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="light"] .form-group input:focus,
+[data-theme="light"] .form-group textarea:focus {
+    border-color: var(--hover-color);
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+[data-theme="light"] .form-group label {
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+} 
