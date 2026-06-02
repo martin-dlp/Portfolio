@@ -12,6 +12,8 @@ Une seule navbar partagée : `navbar.js` (injectée dans `#site-header` sur chaq
 |--------|---------|----------------|
 | CV | `CV_Martin_DELPLACE.pdf` | `documents/CV_Martin_DELPLACE.pdf` |
 | E5 | `Tableau_Synthese_E5.png` | `documents/Tableau_Synthese_E5.png` |
+| Situations → Situation 1 | `Situation_1.pdf` | `documents/Situation_1.pdf` |
+| Situations → Situation 2 | `Situation_2.pdf` | `documents/Situation_2.pdf` |
 
 Les fichiers doivent être présents dans le dossier **`documents/`** à la racine du projet (copie miroir dans `public/documents/` optionnelle).
 
