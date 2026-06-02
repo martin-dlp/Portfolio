@@ -4,65 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - Mon Parcours</title>
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="FooterStyles.css">
     <link rel="stylesheet" href="MonParcoursStyles.css">
+    <link rel="stylesheet" href="FooterStyles.css">
+    <link rel="stylesheet" href="theme.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body data-page="parcours">
     <button class="theme-toggle" aria-label="Changer le thème">
         <i class="fas fa-moon"></i>
     </button>
-    <header>
-        <div class="container">
-            <h1 class="glitch-text">Mon Portfolio</h1>
-            <nav>
-                <ul>
-                    <li><a href="Accueil.html" class="nav-link">Accueil</a></li>
-                    <li><a href="Apropos.html" class="nav-link">À propos</a></li>
-                    <li><a href="Compétences.html" class="nav-link">Compétences</a></li>
-                    <li><a href="Projets.html" class="nav-link">Projets</a></li>
-                    <li><a href="VeillesTechnologiques.html" class="nav-link">Veille Technologique</a></li>
-                    <li><a href="MonParcours.html" class="nav-link active">Mon Parcours</a></li>
-                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <header id="site-header" class="site-header"></header>
 
     <main class="main-content">
-        <section class="section">
+        <section class="section parcours-section">
             <div class="container">
                 <h2 class="section-title glitch-text">Mon Parcours</h2>
+                <p class="section-intro">Un parcours progressif orienté vers l'informatique, avec une montée en compétences continue en développement web.</p>
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <article class="timeline-item reveal-on-scroll">
                         <div class="timeline-content">
-                            <h3>Collège Montesquieu, Narbonne</h3>
-                            <p>Diplôme : Brevet des collèges, mention assez bien</p>
-                            <p>Année : 2020–2021</p>
+                            <span class="timeline-badge">2020 - 2021</span>
+                            <h3><i class="fas fa-school"></i> Collège Montesquieu, Narbonne</h3>
+                            <p class="timeline-label">Diplôme</p>
+                            <p>Brevet des collèges, mention assez bien.</p>
                         </div>
-                    </div>
-                    <div class="timeline-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                    <div class="timeline-item">
+                    </article>
+                    <article class="timeline-item reveal-on-scroll">
                         <div class="timeline-content">
-                            <h3>Lycée Louise Michel, Narbonne</h3>
-                            <p>Diplôme : Baccalauréat technologique</p>
-                            <p>Année : 2023–2024</p>
+                            <span class="timeline-badge">2023 - 2024</span>
+                            <h3><i class="fas fa-graduation-cap"></i> Lycée Louise Michel, Narbonne</h3>
+                            <p class="timeline-label">Diplôme</p>
+                            <p>Baccalauréat technologique.</p>
                         </div>
-                    </div>
-                    <div class="timeline-arrow">
-                        <i class="fas fa-arrow-down"></i>
-                    </div>
-                    <div class="timeline-item">
+                    </article>
+                    <article class="timeline-item reveal-on-scroll">
                         <div class="timeline-content">
-                            <h3>BTS SIO, EPSI Montpellier</h3>
-                            <p>Diplôme : En cours</p>
-                            <p>Année : En cours</p>
+                            <span class="timeline-badge">En cours</span>
+                            <h3><i class="fas fa-laptop-code"></i> BTS SIO, EPSI Montpellier</h3>
+                            <p class="timeline-label">Diplôme</p>
+                            <p>Formation en cours, spécialisation en développement d'applications.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -110,20 +93,22 @@
         </a>
     </footer>
 
+    <script src="navbar.js"></script>
     <script src="footer.js"></script>
     <script src="theme.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const timelineItems = document.querySelectorAll('.timeline-item');
-            
+        document.addEventListener('DOMContentLoaded', function () {
+            const timelineItems = document.querySelectorAll('.reveal-on-scroll');
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
-                threshold: 0.1
+                threshold: 0.2
             });
 
             timelineItems.forEach(item => {

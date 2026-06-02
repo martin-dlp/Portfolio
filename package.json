@@ -1,0 +1,7 @@
+{
+  "name": "portfolio-martin-delplace",
+  "version": "3.0.0",
+  "description": "Portfolio statique HTML/CSS/JS — déployable sur Vercel",
+  "private": true,
+  "license": "MIT"
+}

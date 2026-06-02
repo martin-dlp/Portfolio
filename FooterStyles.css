@@ -1,24 +1,29 @@
-/* --- Styles FOOTER --- */
 footer {
-    background-color: #161b22;
-    padding: 3rem 0;
+    background-color: var(--footer-bg, #161b22);
+    color: var(--text-color, #c9d1d9);
+    padding: 2rem 0;
     margin-top: 4rem;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 -4px 10px var(--shadow-color, rgba(0, 0, 0, 0.5));
 }
 
 .footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
 }
 
 .footer-section h3 {
-    color: #ffffff;
-    margin-bottom: 1.5rem;
-    font-size: 1.2rem;
+    color: var(--footer-title-color, var(--text-color));
+    margin-bottom: 1rem;
 }
 
 .footer-links {
@@ -28,109 +33,77 @@ footer {
 }
 
 .footer-links li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .footer-links a {
-    color: #c9d1d9;
+    color: var(--text-color);
     text-decoration: none;
-    transition: all 0.3s ease;
-    position: relative;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .footer-links a:hover {
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
+    color: var(--hover-color);
+    text-shadow: var(--hover-shadow);
 }
 
 .social-links {
     display: flex;
     gap: 1rem;
-    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .social-links a {
-    color: #c9d1d9;
+    color: var(--text-color);
     font-size: 1.5rem;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .social-links a:hover {
-    color: #00ffff;
-    transform: translateY(-3px);
+    color: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+.email-contact a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.email-contact a:hover {
+    color: var(--hover-color);
 }
 
 .copyright {
     text-align: center;
     margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid #444;
-    color: #c9d1d9;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-color);
 }
 
 .back-to-top {
     position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    background: #00ffff;
-    color: #161b22;
-    width: 40px;
-    height: 40px;
+    bottom: 20px;
+    right: 20px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    text-decoration: none;
     opacity: 0;
-    transition: all 0.3s ease;
-    z-index: 100;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+    z-index: 999;
 }
 
 .back-to-top.visible {
     opacity: 1;
+    visibility: visible;
 }
 
-.back-to-top:hover {
-    background: #ff00ff;
-    transform: translateY(-3px);
+.back-to-top i {
+    font-size: 1rem;
 }
-
-.email-contact {
-    margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid #444;
-}
-
-.email-contact a {
-    color: #c9d1d9;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.email-contact a:hover {
-    color: #00ffff;
-    text-shadow: 0 0 5px #00ffff;
-}
-
-.email-contact i {
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-
-    .social-links {
-        justify-content: center;
-    }
-
-    .back-to-top {
-        bottom: 1rem;
-        right: 1rem;
-    }
-} 

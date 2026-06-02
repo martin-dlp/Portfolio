@@ -7,49 +7,32 @@
     <link rel="stylesheet" href="ContactStyles.css">
     <link rel="stylesheet" href="FooterStyles.css">
     <link rel="stylesheet" href="theme.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
-<body>
+<body data-page="contact">
     <button class="theme-toggle" aria-label="Changer le thème">
         <i class="fas fa-moon"></i>
     </button>
-<header>
-    <div class="container">
-        <h1 class="glitch-text">Mon Portfolio</h1>
-        <nav>
-            <ul>
-                <li><a href="Accueil.html" class="nav-link">Accueil</a></li>
-                <li><a href="Apropos.html" class="nav-link">À propos</a></li>
-                <li><a href="Compétences.html" class="nav-link">Compétences</a></li>
-                <li><a href="Projets.html" class="nav-link">Projets</a></li>
-                <li><a href="VeillesTechnologiques.html" class="nav-link">Veille Technologique</a></li>
-                <li><a href="MonParcours.html" class="nav-link">Mon Parcours</a></li>
-                <li><a href="Contact.html" class="nav-link active">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+<header id="site-header" class="site-header"></header>
 <main class="main-content">
-     <!-- SECTION CONTACT -->
     <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title glitch-text">Me contacter</h2>
-            <form action="" method="post">
-                <div class="form-group">
-                    <label for="name">Nom *</label>
-                    <input type="text" id="name" name="name" required placeholder="Votre nom">
+            <div class="contact-card">
+                <p class="contact-intro">Pour toute demande, vous pouvez m'écrire directement par email.</p>
+                <div class="contact-email-block">
+                    <i class="fas fa-envelope contact-email-icon" aria-hidden="true"></i>
+                    <a href="mailto:delplace.martin1@gmail.com" class="contact-email-link">delplace.martin1@gmail.com</a>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required placeholder="Votre email">
-                </div>
-                <div class="form-group">
-                    <label for="message">Votre message *</label>
-                    <textarea id="message" name="message" required placeholder="Écrivez votre message"></textarea>
-                </div>
-                <button type="submit" class="btn">Envoyer</button>
-            </form>
+                <a
+                    href="mailto:delplace.martin1@gmail.com?subject=Contact%20depuis%20le%20portfolio"
+                    class="btn-mail"
+                    aria-label="Ouvrir votre client de messagerie pour envoyer un email"
+                >
+                    <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                    Envoyer un email
+                </a>
+            </div>
         </div>
     </section>
 </main>
@@ -95,6 +78,7 @@
     </a>
 </footer>
 
+<script src="navbar.js"></script>
 <script src="footer.js"></script>
 <script src="theme.js"></script>
 </body>

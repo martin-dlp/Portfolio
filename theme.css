@@ -1,19 +1,30 @@
 :root {
-    /* Variables pour le thème sombre (par défaut) */
+    /* Accentuation : Bleu → Violet → Rose (tons légèrement éclaircis pour le contraste sur fond sombre) */
+    --accent-blue: #6a7cff;
+    --accent-violet: #c084fc;
+    --accent-rose: #ff6beb;
+    --gradient-accent: linear-gradient(90deg, var(--accent-blue), var(--accent-violet), var(--accent-rose));
+
+    --brand-blue: var(--accent-blue);
+    --brand-violet: var(--accent-violet);
+    --brand-rose: var(--accent-rose);
+    --gradient-brand: var(--gradient-accent);
+
+    /* Mode sombre — fonds et lisibilité (inchangés) */
     --bg-color: #0d1117;
     --text-color: #c9d1d9;
     --header-bg: #161b22;
     --footer-bg: #161b22;
     --card-bg: #222;
     --border-color: #444;
-    --hover-color: #00ffff;
-    --hover-shadow: 0 0 5px #00ffff;
+    --hover-color: var(--accent-violet);
+    --hover-shadow: 0 0 10px rgba(180, 125, 232, 0.55);
     --input-bg: #222;
     --input-border: #444;
     --shadow-color: rgba(0, 0, 0, 0.5);
     --section-bg: transparent;
-    --glitch-color-1: #00ffff;
-    --glitch-color-2: #ff00ff;
+    --glitch-color-1: var(--accent-blue);
+    --glitch-color-2: var(--accent-rose);
     --footer-title-color: #c9d1d9;
     --project-card-bg: #222;
     --veille-section-bg: #161b22;
@@ -28,20 +39,29 @@
 }
 
 [data-theme="light"] {
+    /* Palette mode clair : Bleu → Violet → Rose */
+    --light-blue: #4b00ff;
+    --light-violet: #9b59b6;
+    --light-rose: #ff00ff;
+    --gradient-brand: linear-gradient(90deg, #4b00ff, #9b59b6, #ff00ff);
+    --brand-blue: #4b00ff;
+    --brand-violet: #9b59b6;
+    --brand-rose: #ff00ff;
+
     --bg-color: #ffffff;
     --text-color: #333333;
     --header-bg: #f8f9fa;
     --footer-bg: #f8f9fa;
     --card-bg: #ffffff;
     --border-color: #dee2e6;
-    --hover-color: #007bff;
-    --hover-shadow: 0 0 5px #007bff;
+    --hover-color: #9b59b6;
+    --hover-shadow: 0 0 8px rgba(155, 89, 182, 0.45);
     --input-bg: #ffffff;
     --input-border: #ced4da;
     --shadow-color: rgba(0, 0, 0, 0.1);
     --section-bg: #f8f9fa;
-    --glitch-color-1: #007bff;
-    --glitch-color-2: #ff6b6b;
+    --glitch-color-1: #4b00ff;
+    --glitch-color-2: #ff00ff;
     --footer-title-color: #333333;
     --project-card-bg: #ffffff;
     --veille-section-bg: #ffffff;
@@ -61,9 +81,44 @@ body {
     color: var(--text-color);
 }
 
-header {
+header,
+.site-header {
     background-color: var(--header-bg);
     box-shadow: 0 4px 10px var(--shadow-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 20px 0;
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.site-header h1.glitch-text {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.site-header nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+.site-header nav ul li a.nav-link.active {
+    color: var(--hover-color);
+    text-shadow: var(--hover-shadow);
 }
 
 footer {
@@ -75,8 +130,10 @@ footer {
     background-color: var(--section-bg);
 }
 
-.glitch-text {
-    background: linear-gradient(90deg, var(--glitch-color-1), var(--glitch-color-2));
+.glitch-text,
+.section-title.glitch-text,
+.text-content h1.glitch-text {
+    background: var(--gradient-brand);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -115,13 +172,6 @@ footer {
 .email-contact a:hover {
     color: var(--hover-color);
     text-shadow: var(--hover-shadow);
-}
-
-.form-group input,
-.form-group textarea {
-    background-color: var(--input-bg);
-    border-color: var(--input-border);
-    color: var(--text-color);
 }
 
 .copyright {
@@ -310,9 +360,10 @@ footer {
 
 .progress {
     height: 100%;
-    background-color: var(--hover-color);
+    width: 100% !important;
+    background: var(--gradient-brand);
     border-radius: 3px;
-    transition: width 0.3s ease;
+    transition: width 0.8s ease-in-out;
 }
 
 /* Styles spécifiques pour le mode clair */
@@ -369,26 +420,262 @@ footer {
     background-color: var(--section-bg);
 }
 
-/* Styles pour le formulaire de contact en mode clair */
-[data-theme="light"] .form-group input,
-[data-theme="light"] .form-group textarea {
-    background-color: var(--input-bg);
-    border: 1px solid var(--input-border);
-    color: var(--input-text-color);
-    border-radius: 4px;
-    padding: 0.75rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+[data-theme="light"] .skills-subtitle {
+    color: var(--text-color) !important;
+    background: none !important;
+    -webkit-text-fill-color: unset !important;
 }
 
-[data-theme="light"] .form-group input:focus,
-[data-theme="light"] .form-group textarea:focus {
+.document-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1;
+    background-color: var(--card-bg);
+}
+
+.document-btn i {
+    font-size: 0.78rem;
+}
+
+.document-btn:hover {
     border-color: var(--hover-color);
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
-    outline: none;
 }
 
-[data-theme="light"] .form-group label {
-    color: var(--text-color);
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-} 
+@media (max-width: 900px) {
+    .site-header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .site-header nav ul {
+        justify-content: center;
+    }
+}
+
+/* Mode sombre — accents Bleu → Violet → Rose (fonds sombres conservés) */
+body:not([data-theme="light"]) #about .section-title,
+body:not([data-theme="light"]) #skills .section-title,
+body:not([data-theme="light"]) #projects .section-title,
+body:not([data-theme="light"]) #veille .section-title,
+body:not([data-theme="light"]) #contact .section-title,
+body:not([data-theme="light"]) .bubble-title,
+body:not([data-theme="light"]) .glitch-text,
+body:not([data-theme="light"]) .text-content h1.glitch-text {
+    background: var(--gradient-accent) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+body:not([data-theme="light"]) .footer-links a:hover,
+body:not([data-theme="light"]) .social-links a:hover,
+body:not([data-theme="light"]) .email-contact a:hover,
+body:not([data-theme="light"]) .contact-email-link:hover {
+    color: var(--accent-violet) !important;
+    text-shadow: var(--hover-shadow) !important;
+}
+
+body:not([data-theme="light"]) .btn-primary,
+body:not([data-theme="light"]) .btn-mail,
+body:not([data-theme="light"]) .back-to-top {
+    background: var(--gradient-accent) !important;
+    color: #ffffff !important;
+    border: none;
+}
+
+body:not([data-theme="light"]) .skill-icon,
+body:not([data-theme="light"]) .skill-icon-project,
+body[data-theme="dark"] .skill-icon-project {
+    background: var(--gradient-accent) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+body:not([data-theme="light"]) .progress-bar .progress {
+    background: linear-gradient(to right, var(--accent-blue), var(--accent-violet), var(--accent-rose)) !important;
+}
+
+body:not([data-theme="light"]) .timeline::before {
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-violet), var(--accent-rose)) !important;
+}
+
+body:not([data-theme="light"]) .timeline-item::before {
+    background: var(--accent-violet) !important;
+    box-shadow: 0 0 0 4px rgba(180, 125, 232, 0.35) !important;
+}
+
+body:not([data-theme="light"]) .timeline-badge,
+body:not([data-theme="light"]) .timeline-label {
+    color: var(--accent-violet) !important;
+}
+
+body:not([data-theme="light"]) .timeline-content h3 i {
+    color: var(--accent-blue) !important;
+}
+
+body:not([data-theme="light"]) .timeline-content:hover {
+    border-color: var(--accent-violet) !important;
+}
+
+body:not([data-theme="light"]) .contact-email-icon {
+    color: var(--accent-blue) !important;
+}
+
+body:not([data-theme="light"]) .document-btn:hover {
+    border-color: var(--accent-violet) !important;
+}
+
+body:not([data-theme="light"]) #site-header.site-header nav ul li a.nav-link:hover,
+body:not([data-theme="light"]) #site-header.site-header nav ul li a.document-btn:hover,
+body:not([data-theme="light"]) #site-header.site-header nav ul li a.nav-link.active {
+    color: var(--accent-violet) !important;
+    text-shadow: var(--hover-shadow) !important;
+}
+
+body:not([data-theme="light"]) .theme-toggle:hover {
+    box-shadow: 0 0 12px rgba(180, 125, 232, 0.45) !important;
+}
+
+/* Mode clair — dégradé Bleu → Violet → Rose */
+[data-theme="light"] #about .section-title,
+[data-theme="light"] #skills .section-title,
+[data-theme="light"] #projects .section-title,
+[data-theme="light"] #veille .section-title,
+[data-theme="light"] #contact .section-title,
+[data-theme="light"] .bubble-title,
+[data-theme="light"] .glitch-text,
+[data-theme="light"] .text-content h1.glitch-text {
+    background: linear-gradient(90deg, #4b00ff, #9b59b6, #ff00ff) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+[data-theme="light"] .footer-links a:hover,
+[data-theme="light"] .social-links a:hover,
+[data-theme="light"] .email-contact a:hover,
+[data-theme="light"] .contact-email-link:hover {
+    color: #9b59b6 !important;
+    text-shadow: 0 0 8px rgba(155, 89, 182, 0.5);
+}
+
+[data-theme="light"] .btn-mail,
+[data-theme="light"] .back-to-top {
+    background: linear-gradient(90deg, #4b00ff, #9b59b6, #ff00ff) !important;
+    color: #ffffff !important;
+}
+
+[data-theme="light"] .progress-bar .progress {
+    background: linear-gradient(to right, #4b00ff, #9b59b6, #ff00ff) !important;
+}
+
+[data-theme="light"] .contact-email-icon {
+    color: #4b00ff !important;
+}
+
+[data-theme="light"] .skill-icon,
+[data-theme="light"] .skill-icon-project {
+    background: linear-gradient(90deg, #4b00ff, #9b59b6, #ff00ff) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+[data-theme="light"] .document-btn:hover {
+    border-color: #9b59b6;
+}
+
+/* Navbar unifiée — même rendu sur toutes les pages (y compris Contact) */
+#site-header.site-header {
+    background-color: var(--header-bg) !important;
+    padding: 20px 0 !important;
+    box-shadow: 0 4px 10px var(--shadow-color) !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 100 !important;
+}
+
+#site-header.site-header .container {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 1rem !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
+}
+
+#site-header.site-header h1.glitch-text {
+    margin: 0 !important;
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    text-transform: uppercase !important;
+}
+
+#site-header.site-header nav ul {
+    list-style: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 20px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    align-items: center !important;
+}
+
+#site-header.site-header nav ul li a.nav-link,
+#site-header.site-header nav ul li a.document-btn {
+    text-decoration: none !important;
+    color: var(--text-color) !important;
+    font-weight: bold !important;
+    transition: color 0.3s ease, text-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+#site-header.site-header nav ul li a.nav-link:hover,
+#site-header.site-header nav ul li a.document-btn:hover {
+    color: var(--hover-color) !important;
+    text-shadow: var(--hover-shadow) !important;
+}
+
+#site-header.site-header nav ul li a.nav-link.active {
+    color: var(--hover-color) !important;
+    text-shadow: var(--hover-shadow) !important;
+}
+
+#site-header.site-header .document-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.35rem !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: 999px !important;
+    padding: 0.35rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    line-height: 1 !important;
+    background-color: var(--card-bg) !important;
+}
+
+[data-theme="light"] #site-header.site-header nav ul li a.nav-link:hover,
+[data-theme="light"] #site-header.site-header nav ul li a.document-btn:hover,
+[data-theme="light"] #site-header.site-header nav ul li a.nav-link.active {
+    color: #9b59b6 !important;
+    text-shadow: 0 0 8px rgba(155, 89, 182, 0.5) !important;
+}
+
+@media (max-width: 900px) {
+    #site-header.site-header .container {
+        flex-direction: column !important;
+        text-align: center !important;
+    }
+
+    #site-header.site-header nav ul {
+        justify-content: center !important;
+    }
+}
