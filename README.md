@@ -27,4 +27,19 @@ Ouvrir `http://localhost:3000/Accueil.html`
 
 ## Déploiement Vercel
 
-Aucune variable d'environnement requise. Le dossier `documents/` à la racine est servi automatiquement à l’URL `/documents/...`.
+**Ce projet n’est pas Next.js** : pages HTML à la racine (`Accueil.html`, `index.html`, etc.).
+
+Le fichier `vercel.json` force le mode site statique (`framework: null`, `outputDirectory: "."`).
+
+Dans le tableau de bord Vercel → **Settings → General → Build & Development** :
+
+| Paramètre | Valeur |
+|-----------|--------|
+| Framework Preset | **Other** |
+| Build Command | *(vide ou laisser `vercel.json`)* |
+| Output Directory | **`.`** (point) ou vide |
+| Install Command | *(vide)* |
+
+Aucune variable d'environnement requise. Le dossier `documents/` à la racine est servi à l’URL `/documents/...`.
+
+Après push, la page d’accueil est accessible sur `/` (redirection vers `Accueil.html`) et directement sur `/Accueil.html`.
